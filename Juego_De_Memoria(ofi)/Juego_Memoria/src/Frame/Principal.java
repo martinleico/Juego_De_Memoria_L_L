@@ -17,7 +17,7 @@ public class Principal extends javax.swing.JFrame implements ActionListener {
     public int getDificultad(){
         return dificultad;
     }
-    private int segundosRestantes = 60; // Asumiendo un valor inicial de 60 segundos
+    private int segundosRestantes = 20; // Asumiendo un valor inicial de 60 segundos
     private javax.swing.Timer timer; // Temporizador para contar el tiempo
 
 
