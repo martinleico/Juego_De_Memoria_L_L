@@ -94,7 +94,7 @@ public class Utilities {
     //METODO DONDE LAS IMAGENES YA HICIERON MATCH
     public void imgStartMatch() {
         if (ok.size() == 8) {
-            JOptionPane.showMessageDialog(null, "Win Player");
+            JOptionPane.showMessageDialog(null, "Has Ganado");
 
             for (int i = 0; i < ok.size(); i++) {
                 paintImage(ok.get(i).getBtn(), ok.get(i).getValueMatch());
