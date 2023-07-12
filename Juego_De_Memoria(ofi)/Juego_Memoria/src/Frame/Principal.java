@@ -42,6 +42,14 @@ public class Principal extends javax.swing.JFrame implements ActionListener {
         btn08.setEnabled(false);
     }
 
+    public void stopTimer() {
+        timer.stop();
+    }
+    public void resetTimer(){
+        segundosRestantes = 25;
+        timer.restart();
+    }
+
     public void actionPerformed(ActionEvent e) {
         if (!partidaTerminada) { // Verificar si la partida no termino
             if (segundosRestantes > 0) {

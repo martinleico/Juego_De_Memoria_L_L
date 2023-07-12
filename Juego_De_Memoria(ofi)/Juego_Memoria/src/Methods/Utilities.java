@@ -5,9 +5,7 @@ import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 
 public class Utilities {
@@ -95,6 +93,9 @@ public class Utilities {
     public void imgStartMatch() {
         if (ok.size() == 8) {
             JOptionPane.showMessageDialog(null, "Has Ganado");
+            Principal principal = (Principal) SwingUtilities.getWindowAncestor(ok.get(0).getBtn());
+            principal.stopTimer();
+            principal.resetTimer();
 
             for (int i = 0; i < ok.size(); i++) {
                 paintImage(ok.get(i).getBtn(), ok.get(i).getValueMatch());
