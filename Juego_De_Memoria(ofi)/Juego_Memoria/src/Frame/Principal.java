@@ -17,36 +17,48 @@ public class Principal extends javax.swing.JFrame implements ActionListener {
     public int getDificultad(){
         return dificultad;
     }
-    private int segundosRestantes = 25; // Asumiendo un valor inicial de 60 segundos
+    private int segundosRestantes = 25; // Asumiendo un valor inicial de 25 segundos
     private javax.swing.Timer timer; // Temporizador para contar el tiempo
-
+    private boolean partidaTerminada = false; // Indica si la partida termino o continua
 
     public void mostrarMensajeDerrota() {
+        partidaTerminada = true; // Indicar que la partida ya termino
         JLabel mensaje = new JLabel("¡Perdiste, intentalo nuevamente!");
         setLayout(new FlowLayout());
         add(mensaje);
         pack();
-        setLocationRelativeTo(null); // Centrar el frame en la pantalla
+        setLocationRelativeTo(null); // Centra el frame en la pantalla
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Cerrar la aplicación al cerrar el frame
         setVisible(true); // Mostrar el frame
+
+        // Deshabilitar los botones de las cartas
+        btn01.setEnabled(false);
+        btn02.setEnabled(false);
+        btn03.setEnabled(false);
+        btn04.setEnabled(false);
+        btn05.setEnabled(false);
+        btn06.setEnabled(false);
+        btn07.setEnabled(false);
+        btn08.setEnabled(false);
     }
 
     public void actionPerformed(ActionEvent e) {
-
-        if (segundosRestantes > 0) {
-            segundosRestantes--;
-            // Actualizar la visualización del contador de tiempo
-            System.out.println("Tiempo restante: " + segundosRestantes + " segundos");
-        } else {
-            // El tiempo ha terminado, el jugador pierde
-            System.out.println("Tiempo agotado. ¡Perdiste, intentalo nuevamente!");
-            // Llamo al método mostrarMensajeDerrota() en la clase Principal
-            mostrarMensajeDerrota();
-            timer.stop(); // Detener el temporizador después de que el jugador pierde
-
-        }
+        if (!partidaTerminada) { // Verificar si la partida no termino
+            if (segundosRestantes > 0) {
+                segundosRestantes--;
+                // Actualizar la visualización del contador de tiempo
+                System.out.println("Tiempo restante: " + segundosRestantes + " segundos");
+            } else {
+                // El tiempo ha terminado, el jugador pierde
+                System.out.println("Tiempo agotado. ¡Perdiste, intentalo nuevamente!");
+                // Llamo al método mostrarMensajeDerrota() en la clase Principal
+                mostrarMensajeDerrota();
+                timer.stop(); // Detener el temporizador después de que el jugador pierde
             }
-    int clic =0;
+        }
+    }
+
+    int clic =0; //contador de clics en cartas/botones
 
     Utilities u = new Utilities();
 
@@ -76,10 +88,9 @@ public class Principal extends javax.swing.JFrame implements ActionListener {
             next.addAll(u.rowsTable()); // Difícil: Agrega una fila adicional
         }
 
-
-            // Crear el temporizador con una duración de 1 segundo
-            timer = new javax.swing.Timer(1000, this);
-            timer.start(); // Inicia el temporizador
+        // Crea el temporizador con una duración de 1 segundo inicial
+        timer = new javax.swing.Timer(1000, this);
+        timer.start(); // Inicia el temporizador
     }
 
     /**
@@ -243,86 +254,99 @@ public class Principal extends javax.swing.JFrame implements ActionListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn01MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn01MouseClicked
-        //u.evtBtn(btn01,evt,next.get(0));
-        Match m = new Match();
-        m.setBtn(btn01);
-        m.setNumberBtn(1);
-        m.setValueMatch(next.get(0));
-        u.getMatch().add(m);
-        u.paintMatch();
-        u.match();
+        if (!partidaTerminada) { // Verifica si la partida no termino
+            Match m = new Match();
+            m.setBtn(btn01);
+            m.setNumberBtn(1);
+            m.setValueMatch(next.get(0));
+            u.getMatch().add(m);
+            u.paintMatch();
+            u.match();
+        }
     }//GEN-LAST:event_btn01MouseClicked
 
     private void btn02MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn02MouseClicked
-        // TODO add your handling code here:
-        Match m = new Match();
-        m.setBtn(btn02);
-        m.setNumberBtn(2);
-        m.setValueMatch(next.get(1));
-        u.getMatch().add(m);
-        u.paintMatch();
-        u.match();
+        if (!partidaTerminada) { // Verifica si la partida no termino
+            Match m = new Match();
+            m.setBtn(btn02);
+            m.setNumberBtn(2);
+            m.setValueMatch(next.get(1));
+            u.getMatch().add(m);
+            u.paintMatch();
+            u.match();
+        }
     }//GEN-LAST:event_btn02MouseClicked
 
     private void btn03MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn03MouseClicked
-        // TODO add your handling code here:
-        Match m = new Match();
-        m.setBtn(btn03);
-        m.setNumberBtn(3);
-        m.setValueMatch(next.get(2));
-        u.getMatch().add(m);
-        u.paintMatch();
-        u.match();
+        if (!partidaTerminada) { // Verifica si la partida no termino
+            Match m = new Match();
+            m.setBtn(btn03);
+            m.setNumberBtn(3);
+            m.setValueMatch(next.get(2));
+            u.getMatch().add(m);
+            u.paintMatch();
+            u.match();
+        }
     }//GEN-LAST:event_btn03MouseClicked
 
     private void btn04MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn04MouseClicked
-        Match m = new Match();
-        m.setBtn(btn04);
-        m.setNumberBtn(4);
-        m.setValueMatch(next.get(3));
-        u.getMatch().add(m);
-        u.paintMatch();
-        u.match();
+        if (!partidaTerminada) { // Verifica si la partida no termino
+            Match m = new Match();
+            m.setBtn(btn04);
+            m.setNumberBtn(4);
+            m.setValueMatch(next.get(3));
+            u.getMatch().add(m);
+            u.paintMatch();
+            u.match();
+        }
     }//GEN-LAST:event_btn04MouseClicked
 
     private void btn05MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn05MouseClicked
-        Match m = new Match();
-        m.setBtn(btn05);
-        m.setNumberBtn(5);
-        m.setValueMatch(next.get(4));
-        u.getMatch().add(m);
-        u.paintMatch();
-        u.match();
+        if (!partidaTerminada) { // Verifica si la partida no termino
+            Match m = new Match();
+            m.setBtn(btn05);
+            m.setNumberBtn(5);
+            m.setValueMatch(next.get(4));
+            u.getMatch().add(m);
+            u.paintMatch();
+            u.match();
+        }
     }//GEN-LAST:event_btn05MouseClicked
 
     private void btn06MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn06MouseClicked
-        Match m = new Match();
-        m.setBtn(btn06);
-        m.setNumberBtn(6);
-        m.setValueMatch(next.get(5));
-        u.getMatch().add(m);
-        u.paintMatch();
-        u.match();
+        if (!partidaTerminada) { // Verifica si la partida no termino
+            Match m = new Match();
+            m.setBtn(btn06);
+            m.setNumberBtn(6);
+            m.setValueMatch(next.get(5));
+            u.getMatch().add(m);
+            u.paintMatch();
+            u.match();
+        }
     }//GEN-LAST:event_btn06MouseClicked
 
     private void btn07MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn07MouseClicked
-        Match m = new Match();
-        m.setBtn(btn07);
-        m.setNumberBtn(7);
-        m.setValueMatch(next.get(6));
-        u.getMatch().add(m);
-        u.paintMatch();
-        u.match();
+        if (!partidaTerminada) { // Verifica si la partida no termino
+            Match m = new Match();
+            m.setBtn(btn07);
+            m.setNumberBtn(7);
+            m.setValueMatch(next.get(6));
+            u.getMatch().add(m);
+            u.paintMatch();
+            u.match();
+        }
     }//GEN-LAST:event_btn07MouseClicked
 
     private void btn08MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn08MouseClicked
-        Match m = new Match();
-        m.setBtn(btn08);
-        m.setNumberBtn(8);
-        m.setValueMatch(next.get(7));
-        u.getMatch().add(m);
-        u.paintMatch();
-        u.match();
+        if (!partidaTerminada) { // Verifica si la partida no termino
+            Match m = new Match();
+            m.setBtn(btn08);
+            m.setNumberBtn(8);
+            m.setValueMatch(next.get(7));
+            u.getMatch().add(m);
+            u.paintMatch();
+            u.match();
+        }
     }//GEN-LAST:event_btn08MouseClicked
 
     /**
