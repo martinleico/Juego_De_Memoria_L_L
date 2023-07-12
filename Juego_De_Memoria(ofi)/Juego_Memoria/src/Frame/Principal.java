@@ -55,9 +55,10 @@ public class Principal extends javax.swing.JFrame implements ActionListener {
                 mostrarMensajeDerrota();
                 timer.stop(); // Detener el temporizador después de que el jugador pierde
             }
+
+
         }
     }
-
     int clic =0; //contador de clics en cartas/botones
 
     Utilities u = new Utilities();
@@ -68,7 +69,7 @@ public class Principal extends javax.swing.JFrame implements ActionListener {
 
     public Principal() {
         initComponents();
-        this.setTitle("Memory");
+        this.setTitle("Juego de Memoria");
         this.setLocationRelativeTo(this);
         u.imgStart();
 
